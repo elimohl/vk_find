@@ -5,10 +5,7 @@ import requests
 
 def get_info_from_api(method_name, **parameters):
     url = "https://api.vk.com/method/{}?".format(method_name)
-    for key, val in parameters.items():
-        url += "{}={}&".format(key, val)
-    url = url[:-1]
-    r = requests.get(url)
+    r = requests.get(url, params=parameters)
     return r.json().get('response', [])
 
 
